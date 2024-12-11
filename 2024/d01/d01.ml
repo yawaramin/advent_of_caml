@@ -1,4 +1,4 @@
-let data_txt = "./2024/d01/data.txt"
+let input_txt = "./2024/d01/input.txt"
 
 let add_to_lists ((list1, list2) as lists) = function
   | "" -> lists
@@ -8,12 +8,11 @@ let add_to_lists ((list1, list2) as lists) = function
 
 let p1 () =
   let list1, list2 =
-    In_channel.with_open_bin data_txt
+    In_channel.with_open_bin input_txt
       (In_channel.fold_lines add_to_lists ([], []))
   in
-  let list1 = List.sort Int.compare list1
-  and list2 = List.sort Int.compare list2 in
-  list2
+  let list1 = List.sort Int.compare list1 in
+  list2 |> List.sort Int.compare
   |> List.map2 (fun num1 num2 -> abs (num1 - num2)) list1
   |> List.fold_left ( + ) 0
 
@@ -33,7 +32,7 @@ let add_to_maps ((map1, map2) as maps) = function
 
 let p2 () =
   let map1, map2 =
-    In_channel.with_open_bin data_txt
+    In_channel.with_open_bin input_txt
       (In_channel.fold_lines add_to_maps (IntMap.empty, IntMap.empty))
   in
   let calc_similarity left_num left_count similarity =

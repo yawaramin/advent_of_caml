@@ -1,2 +1,3 @@
 (executable
- (name d02))
+ (name d02)
+ (libraries lib))

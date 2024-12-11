@@ -1,6 +1,3 @@
-let input_txt = "./2024/d02/input.txt"
-
-(* let input_txt = "./2024/d02/test.txt" *)
 let between min num max = min <= num && num <= max
 
 let safe_diffs diff1 diff2 =
@@ -27,15 +24,11 @@ let calc_safe ?(dampen = false) num_safe = function
       let report = line |> String.split_on_char ' ' |> List.map int_of_string in
       num_safe + if safe_report ~dampen report then 1 else 0
 
-let p1 () =
-  In_channel.with_open_bin input_txt (In_channel.fold_lines calc_safe 0)
+let p1 () = Lib.fold_file_lines __FILE__ 0 calc_safe
 
 (* 246 *)
 let () = Printf.printf "\nPart 1: %d\n" (p1 ())
-
-let p2 () =
-  In_channel.with_open_bin input_txt
-    (In_channel.fold_lines (calc_safe ~dampen:true) 0)
+let p2 () = Lib.fold_file_lines __FILE__ 0 (calc_safe ~dampen:true)
 
 (* 318 *)
 let () = Printf.printf "Part 2: %d\n" (p2 ())

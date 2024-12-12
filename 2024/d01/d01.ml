@@ -11,9 +11,6 @@ let p1 () =
   |> List.map2 (fun num1 num2 -> abs (num1 - num2)) list1
   |> List.fold_left ( + ) 0
 
-(* Part 1: 1388114 *)
-let () = Printf.printf "\nPart 1: %d\n" (p1 ())
-
 module IntMap = Map.Make (Int)
 
 let incr_count num =
@@ -37,5 +34,6 @@ let p2 () =
   in
   IntMap.fold calc_similarity map1 0
 
-(* 23529853 *)
-let () = Printf.printf "Part 2: %d\n" (p2 ())
+(* Part 1: 1388114
+   Part 2: 23529853 *)
+let () = Lib.print_parts p1 p2

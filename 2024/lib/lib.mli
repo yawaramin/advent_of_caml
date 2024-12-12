@@ -7,3 +7,5 @@ val fold_file_lines : ?test:bool -> string -> 'a -> ('a -> string -> 'a) -> 'a
       determines whether to open the test file or the real input file. If
       [test], then the file that is actually opened is [name ^ ".test"].
       Otherwise the file [name ^ ".input"] is opened. *)
+
+val print_parts : (unit -> int) -> (unit -> int) -> unit

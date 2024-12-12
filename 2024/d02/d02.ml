@@ -25,10 +25,8 @@ let calc_safe ?(dampen = false) num_safe = function
       num_safe + if safe_report ~dampen report then 1 else 0
 
 let p1 () = Lib.fold_file_lines __FILE__ 0 calc_safe
-
-(* 246 *)
-let () = Printf.printf "\nPart 1: %d\n" (p1 ())
 let p2 () = Lib.fold_file_lines __FILE__ 0 (calc_safe ~dampen:true)
 
-(* 318 *)
-let () = Printf.printf "Part 2: %d\n" (p2 ())
+(* Part 1: 246
+   Part 2: 318 *)
+let () = Lib.print_parts p1 p2
